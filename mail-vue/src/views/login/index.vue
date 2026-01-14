@@ -570,41 +570,79 @@ function submitRegister() {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 32px 24px;
   @media (max-width: 767px) {
     width: 100%;
   }
 }
 
 .container {
-  background: v-bind(loginOpacity);
-  padding-left: 40px;
-  padding-right: 40px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(240, 248, 255, 0.88));
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 450px;
   height: 100%;
-  border-left: 1px solid var(--login-border);
-  box-shadow: var(--el-box-shadow-light);
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 28px 0 0 28px;
+  box-shadow: 0 24px 60px rgba(46, 130, 255, 0.22), 0 10px 24px rgba(92, 191, 255, 0.2);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
   @media (max-width: 1024px) {
     padding: 20px 18px;
     width: 384px;
     margin-left: 18px;
   }
   @media (max-width: 767px) {
-    border: 1px solid var(--login-border);
+    border: 1px solid rgba(255, 255, 255, 0.65);
     padding: 20px 18px;
-    border-radius: 6px;
+    border-radius: 22px;
     height: fit-content;
     width: 100%;
     margin-right: 18px;
     margin-left: 18px;
   }
 
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(126, 211, 255, 0.75), rgba(160, 140, 255, 0.45), rgba(255, 255, 255, 0.8));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(122, 207, 255, 0.35), rgba(122, 207, 255, 0));
+    top: -60px;
+    right: -40px;
+    pointer-events: none;
+  }
+
   .btn {
     height: 36px;
     width: 100%;
-    border-radius: 6px;
+    border-radius: 20px;
+  }
+
+  :deep(.btn.el-button--primary) {
+    border: none;
+    background: linear-gradient(135deg, #3aa9ff, #6ad5ff);
+    box-shadow: 0 10px 20px rgba(58, 169, 255, 0.35);
+  }
+
+  :deep(.btn.el-button--primary:hover) {
+    background: linear-gradient(135deg, #5bc0ff, #7ee0ff);
   }
 
   .form-desc {
@@ -616,6 +654,9 @@ function submitRegister() {
   .form-title {
     font-weight: bold;
     font-size: 22px !important;
+    letter-spacing: 1px;
+    color: #3b7dd8;
+    text-shadow: 0 6px 18px rgba(75, 140, 255, 0.35);
   }
 
   .switch {
@@ -629,13 +670,15 @@ function submitRegister() {
   }
 
   :deep(.el-input__wrapper) {
-    border-radius: 6px;
-    background: var(--el-bg-color);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(160, 210, 255, 0.35);
+    box-shadow: inset 0 2px 6px rgba(92, 191, 255, 0.08);
   }
 
   .email-input :deep(.el-input__wrapper) {
-    border-radius: 6px 0 0 6px;
-    background: var(--el-bg-color);
+    border-radius: 14px 0 0 14px;
+    background: rgba(255, 255, 255, 0.8);
   }
 
   .el-input {
@@ -694,8 +737,9 @@ function submitRegister() {
   padding: 0 !important;
   padding-left: 8px !important;
   padding-right: 4px !important;
-  background: var(--el-bg-color);
-  border-radius: 0 8px 8px 0;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 0 14px 14px 0;
+  border-left: 1px solid rgba(160, 210, 255, 0.35);
 }
 
 :deep(.el-button+.el-button) {
@@ -725,7 +769,7 @@ function submitRegister() {
 
 
 #login-box {
-  background: linear-gradient(to bottom, #2980b9, #6dd5fa, #fff);
+  background: linear-gradient(135deg, #6dc6ff 0%, #7bb6ff 45%, #c4e3ff 100%);
   font: 100% Arial, sans-serif;
   height: 100%;
   margin: 0;
@@ -733,6 +777,37 @@ function submitRegister() {
   overflow-x: hidden;
   display: grid;
   grid-template-columns: 1fr;
+  position: relative;
+}
+
+#login-box::before,
+#login-box::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+#login-box::before {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
+  left: 8%;
+  top: 18%;
+}
+
+#login-box::after {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(150, 210, 255, 0.6), rgba(150, 210, 255, 0));
+  right: 10%;
+  bottom: 12%;
+}
+
+#background-wrap {
+  position: relative;
 }
 
 
